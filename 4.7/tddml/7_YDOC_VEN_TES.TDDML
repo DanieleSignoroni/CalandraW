@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE TDDML SYSTEM "../../../TDDML.dtd">
+<TDDML>
+  <!-- YDOC_VEN_TES (YDOC_VE): Documento vendita; -->
+  <CreateTable schema="THIPPERS" name="YDOC_VEN_TES" shortname="YDOC_VE">
+    <Column name="ID_AZIENDA" shortname="ID_AZIENDA" type="char" length="3" nullable="no"/>
+    <Column name="ID_ANNO_DOC" shortname="ID_ANNO_DO" type="char" length="6" nullable="no"/>
+    <Column name="ID_NUMERO_DOC" shortname="ID_NUMERO_" type="char" length="10" nullable="no"/>
+    <Column name="CHIAVE_DOC_VEN_NUOVA_LAT" shortname="CHIAVE_DOC" type="varchar" length="50" nullable="yes"/>
+	<Column name="NUMERO_TELEFONO_DESTINAZIONE" shortname="NUM_TELEF_DEST" type="varchar" length="25" nullable="yes"/>
+  </CreateTable>
+  <CreateIndex schema="THIPPERS" name="YDOC_VEN_TES_I01" tabschema="THIPPERS" tabname="YDOC_VEN_TES" shortname="YDOC_V_I01" unique="yes">
+    <IndexCol name="ID_AZIENDA" order="Asc"/>
+    <IndexCol name="ID_ANNO_DOC" order="Asc"/>
+    <IndexCol name="ID_NUMERO_DOC" order="Asc"/>
+  </CreateIndex>
+  <AlterTable schema="THIPPERS" name="YDOC_VEN_TES">
+    <AddPrimaryKey>
+      <PrimaryKey>
+        <ColumnRef name="ID_AZIENDA"/>
+        <ColumnRef name="ID_ANNO_DOC"/>
+        <ColumnRef name="ID_NUMERO_DOC"/>
+      </PrimaryKey>
+    </AddPrimaryKey>
+  </AlterTable>
+  <Comment>
+    <CommentTable schema="THIPPERS" name="YDOC_VEN_TES" text="Documento vendita">
+      <CommentColumn name="ID_AZIENDA" text="Azienda"/>
+      <CommentColumn name="ID_ANNO_DOC" text="Anno documento"/>
+      <CommentColumn name="ID_NUMERO_DOC" text="N.ro documento"/>
+      <CommentColumn name="CHIAVE_DOC_VEN_NUOVA_LAT" text="Chiave Documento - Nuova Laterpoint"/>
+	  <CommentColumn name="NUMERO_TELEFONO_DESTINAZIONE" text="Numero telefono destinazione - Nuova Laterpoint"/>
+    </CommentTable>
+    <CommentIndex schema="THIPPERS" name="YDOC_VEN_TES_I01" text="Primary Key"/>
+  </Comment>
+  <Grant schema="THIPPERS" name="YDOC_VEN_TES"/>
+</TDDML>

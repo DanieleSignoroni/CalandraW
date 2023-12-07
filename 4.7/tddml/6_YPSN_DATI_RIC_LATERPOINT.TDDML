@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE TDDML SYSTEM "../../../TDDML.dtd">
+<TDDML>
+  <!-- YPSN_DATI_RIC_LATERPOINT (YPSN_DA): Pers. dati - Nuova Laterpoint; -->
+  <CreateTable schema="THIPPERS" name="YPSN_DATI_RIC_LATERPOINT" shortname="YPSN_DA">
+    <Column name="ID_AZIENDA" shortname="ID_AZIENDA" type="char" length="3" nullable="no"/>
+    <Column name="STATO" shortname="STATO" type="char" length="1" nullable="no"/>
+    <Column name="R_UTENTE_CRZ" shortname="R_UTENTE_C" type="char" length="20" nullable="yes"/>
+    <Column name="TIMESTAMP_CRZ" shortname="TIMESTAMP_" type="timestamp" nullable="no" default="CURRENT TIMESTAMP"/>
+    <Column name="R_UTENTE_AGG" shortname="R_UTENTE_A" type="char" length="20" nullable="yes"/>
+    <Column name="TIMESTAMP_AGG" shortname="TIMESTAMP0" type="timestamp" nullable="no" default="CURRENT TIMESTAMP"/>
+    <Column name="RICEZIONE_ABILITATA" shortname="RICEZIONE_" type="char" length="1" nullable="no" default="N"/>
+    <Column name="R_SERIE_DOC_VEN" shortname="R_SERIE_DO" type="char" length="2" nullable="yes"/>
+    <Column name="R_NUMERATORE_DOC_VEN" shortname="R_NUMERATO" type="char" length="15" nullable="yes"/>
+  </CreateTable>
+  <CreateIndex schema="THIPPERS" name="YPSN_DATI_RIC__I01" tabschema="THIPPERS" tabname="YPSN_DATI_RIC_LATERPOINT" shortname="YPSN_D_I01" unique="yes">
+    <IndexCol name="ID_AZIENDA" order="Asc"/>
+  </CreateIndex>
+  <AlterTable schema="THIPPERS" name="YPSN_DATI_RIC_LATERPOINT">
+    <AddPrimaryKey>
+      <PrimaryKey>
+        <ColumnRef name="ID_AZIENDA"/>
+      </PrimaryKey>
+    </AddPrimaryKey>
+  </AlterTable>
+  <Comment>
+    <CommentTable schema="THIPPERS" name="YPSN_DATI_RIC_LATERPOINT" text="Pers. dati - Nuova Laterpoint">
+      <CommentColumn name="ID_AZIENDA" text="Azienda"/>
+      <CommentColumn name="STATO" text="Stato"/>
+      <CommentColumn name="R_UTENTE_CRZ" text="Utente creazione"/>
+      <CommentColumn name="TIMESTAMP_CRZ" text="Timestamp creazione"/>
+      <CommentColumn name="R_UTENTE_AGG" text="Utente ultima modifica"/>
+      <CommentColumn name="TIMESTAMP_AGG" text="Timestamp ultima modifica"/>
+      <CommentColumn name="RICEZIONE_ABILITATA" text="Ricezione abilitata"/>
+      <CommentColumn name="R_SERIE_DOC_VEN" text="Serie documento vendita"/>
+      <CommentColumn name="R_NUMERATORE_DOC_VEN" text="Numeratore documento vendita"/>
+    </CommentTable>
+    <CommentIndex schema="THIPPERS" name="YPSN_DATI_RIC__I01" text="Primary Key"/>
+  </Comment>
+  <Grant schema="THIPPERS" name="YPSN_DATI_RIC_LATERPOINT"/>
+</TDDML>

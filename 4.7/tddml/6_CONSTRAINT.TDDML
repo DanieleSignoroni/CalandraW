@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE TDDML SYSTEM "../../../TDDML.dtd">
+<TDDML>
+  <!-- YPSN_DATI_RIC_LATERPOINT (YPSN_DA) -->
+  <AlterTable schema="THIPPERS" name="YPSN_DATI_RIC_LATERPOINT">
+    <AddConstraint>
+      <Constraint name="Azienda_1369139640" refschema="THIP" reftable="AZIENDE_ESTESE" schema="THIPPERS" ondelete="Restrict">
+        <ColumnRef name="ID_AZIENDA"/>
+      </Constraint>
+      <Constraint name="SerieDocumentoVend" refschema="THIP" reftable="NUM_SERIE" schema="THIPPERS" ondelete="Cascade">
+        <ColumnRef name="ID_AZIENDA"/>
+        <ColumnRef name="R_NUMERATORE_DOC_VEN"/>
+        <ColumnRef name="R_SERIE_DOC_VEN"/>
+      </Constraint>
+      <Constraint name="NumeratoreDocument" refschema="THIP" reftable="NUMERATORI" schema="THIPPERS" ondelete="Cascade">
+        <ColumnRef name="ID_AZIENDA"/>
+        <ColumnRef name="R_NUMERATORE_DOC_VEN"/>
+      </Constraint>
+    </AddConstraint>
+  </AlterTable>
+  <!-- YTRAS_CAU_TES_NUOVA_LAT (YTRAS_C) -->
+  <AlterTable schema="THIPPERS" name="YTRAS_CAU_TES_NUOVA_LAT">
+    <AddConstraint>
+      <Constraint name="Azienda_1479419318" refschema="THIP" reftable="AZIENDE_ESTESE" schema="THIPPERS" ondelete="Restrict">
+        <ColumnRef name="ID_AZIENDA"/>
+      </Constraint>
+      <Constraint name="CausaleDocVenTes_1" refschema="THIP" reftable="CAU_DOCVEN" schema="THIPPERS" ondelete="Cascade">
+        <ColumnRef name="ID_AZIENDA"/>
+        <ColumnRef name="R_CAU_TES"/>
+      </Constraint>
+      <Constraint name="YTrascodificaCauTe" refschema="THIPPERS" reftable="YPSN_DATI_RIC_LATERPOINT" schema="THIPPERS" ondelete="Cascade">
+        <ColumnRef name="ID_AZIENDA"/>
+      </Constraint>
+    </AddConstraint>
+  </AlterTable>
+  <!-- YTRAS_CAU_RIG_NUOVA_LAT (YTRAS_0) -->
+  <AlterTable schema="THIPPERS" name="YTRAS_CAU_RIG_NUOVA_LAT">
+    <AddConstraint>
+      <Constraint name="Azienda_1143627756" refschema="THIP" reftable="AZIENDE_ESTESE" schema="THIPPERS" ondelete="Restrict">
+        <ColumnRef name="ID_AZIENDA"/>
+      </Constraint>
+      <Constraint name="CausaleDocVenRig_1" refschema="THIP" reftable="CAU_DOCVEN_RIG" schema="THIPPERS" ondelete="Cascade">
+        <ColumnRef name="ID_AZIENDA"/>
+        <ColumnRef name="R_CAU_RIG"/>
+      </Constraint>
+      <Constraint name="YTrascodificaCauRi" refschema="THIPPERS" reftable="YPSN_DATI_RIC_LATERPOINT" schema="THIPPERS" ondelete="Cascade">
+        <ColumnRef name="ID_AZIENDA"/>
+      </Constraint>
+    </AddConstraint>
+  </AlterTable>
+</TDDML>

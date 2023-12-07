@@ -1,0 +1,10 @@
+<tfml>
+  <generator type="internalRowForm"/>
+  <form classHdr="YTrasCauTesNuovaLat"
+    name="YTrasCauTesNuovaLatForm"
+    locktype="optimistic"
+    errorList="no" menubar="no" toolbar="no" submitReset="none">
+	<textinput name="RCauNuovaLat" classAD="RCauNuovaLat"/>
+	<multisearchform name="CausaleDocVenTes" classRD="CausaleDocVenTes"/>
+  </form>
+</tfml>

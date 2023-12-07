@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE TDDML SYSTEM "../../../TDDML.dtd">
+<TDDML>
+  <AlterTable schema="THIPPERS" name="YDOCVEN_RIG_PRM">
+    <AddColumn>
+      <Column name="CHIAVE_DOC_VEN_RIG_NUOVA_LAT" shortname="CHIAVE_NUOVA_LAT" type="char" length="50" nullable="yes"/>
+    </AddColumn>
+  </AlterTable>
+  <Comment>
+    <CommentTable schema="THIPPERS" name="YDOCVEN_RIG_PRM" text="Documento vendita riga pers">
+      <CommentColumn name="CHIAVE_DOC_VEN_RIG_NUOVA_LAT" text="Chiave documento vendita riga - Nuova Laterpoint"/>
+    </CommentTable>
+  </Comment>
+</TDDML>

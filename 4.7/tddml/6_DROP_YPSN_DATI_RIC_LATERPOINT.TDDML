@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE TDDML SYSTEM "../../../TDDML.dtd">
+<TDDML>
+  <DropTable name="YPSN_DATI_RIC_LATERPOINT" schema="THIPPERS">
+    <Continue/>
+  </DropTable>
+  <DropTable name="YTRAS_CAU_TES_NUOVA_LAT" schema="THIPPERS">
+    <Continue/>
+  </DropTable>
+  <DropTable name="YTRAS_CAU_RIG_NUOVA_LAT" schema="THIPPERS">
+    <Continue/>
+  </DropTable>
+</TDDML>
