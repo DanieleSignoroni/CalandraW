@@ -51,7 +51,7 @@ import it.thera.thip.vendite.prezziExtra.DocRigaPrezziExtraVendita;
  * <h1>Softre Solutions</h1> <br>
  * 
  * @version 1.0
- *          <h2>Servizio per ricezione bolle da Nuova Latepoint</h2>
+ *          <h2>Servizio per ricezione fatture da Nuova Latepoint</h2>
  * 
  * @author Daniele Signoroni 07/12/2023 <br>
  *         <br>
@@ -60,13 +60,13 @@ import it.thera.thip.vendite.prezziExtra.DocRigaPrezziExtraVendita;
  *         </p>
  */
 
-public class RicezioneBolleService {
+public class RicezioneFattureService {
 
-	static RicezioneBolleService service;
+	static RicezioneFattureService service;
 
-	public static RicezioneBolleService getRicezioneBolleService() {
+	public static RicezioneFattureService getRicezioneFattureService() {
 		if (service == null)
-			service = new RicezioneBolleService();
+			service = new RicezioneFattureService();
 		return service;
 	}
 
@@ -84,7 +84,7 @@ public class RicezioneBolleService {
 		this.iErrMsgList = iErrMsgList;
 	}
 
-	public JSONObject riceviBollaNuovaLaterpoint(String body, WebServicesLog log) throws PantheraApiException {
+	public JSONObject riceviFatturaNuovaLaterpoint(String body, WebServicesLog log) {
 		iErrMsgList.clear();
 		if (body == null || body.isEmpty()) {
 			throw new PantheraApiException(Status.BAD_REQUEST, erUtils.toBody(Status.BAD_REQUEST, "Body null",
@@ -98,7 +98,7 @@ public class RicezioneBolleService {
 			YDocumentoVendita docVen = processaBolla(bolla);
 			if (!this.getErrMsgList().isEmpty() && docVen == null) {
 				getErrMsgList().add(
-						new ErrorMessage("YCAL_001", "Errore importazione della bolla: " + bolla.getNumeroBolla()));
+						new ErrorMessage("YCAL_001", "Errore importazione della fattura: " + bolla.getNumeroFattura()));
 				throw new PantheraApiException(Status.INTERNAL_SERVER_ERROR,
 						erUtils.toBody(Status.INTERNAL_SERVER_ERROR, this.getErrMsgList()).toString());
 			} else {
@@ -122,14 +122,14 @@ public class RicezioneBolleService {
 		}
 	}
 
-	protected YDocumentoVendita processaBolla(YOggettinoBollaNuovaLaterpoint ogg) throws PantheraApiException {
+	protected YDocumentoVendita processaBolla(YOggettinoBollaNuovaLaterpoint ogg) {
 		YDocumentoVendita docVen = null;
 		String cTes = KeyHelper.buildObjectKey(
 				new String[] { ogg.idAzienda.trim(), ogg.idAnnoDocumento.trim(), ogg.idNumeroDocumento.trim() });
 		String cRig = KeyHelper.buildObjectKey(new String[] { ogg.idAzienda.trim(), ogg.idAnnoDocumento.trim(),
 				ogg.idNumeroDocumento.trim(), ogg.idRigaDocumento });
-		String keyDocVen = YDocumentoVendita.getChiaveDocumentoCalandraDaChiaveDocumentoNuovaLaterpoint(cTes,
-				TipoDocumento.DOCUM_DA_NON_FATTURARE);
+		String keyDocVen = YDocumentoVendita.getChiaveDocumentoFattuuraCalandraDaChiaveDocumentoNuovaLaterpoint(cTes,
+				TipoDocumento.FATTURA, ogg.numeroFattura.substring(1));
 		String keyDocVenRig = null;
 		String idCauRig = null;
 		try {
@@ -166,15 +166,16 @@ public class RicezioneBolleService {
 			int retSaveTes = 0;
 			int retSaveRig = 0;
 			int retCheckRig = BODataCollector.OK;
-			int retCheckTes = checkDocVenTes(docVen);
+			int retCheckTes = 0;// checkDocVenTes(docVen);
 			if (retCheckTes != BODataCollector.ERROR) {
-				docVen.setFlagRiservatoUtente1(TipoDocumento.DOCUM_DA_NON_FATTURARE);
+				docVen.setFlagRiservatoUtente1(TipoDocumento.FATTURA);
 				retSaveTes = docVen.save();
 				docVen.retrieve();
 				Articolo art = getArticoloClandraDaArticoloLatepoint(ogg.vsCodArt.trim());
 				if (art == null) {
 					getErrMsgList()
 							.add(new ErrorMessage("BAS0000000", "Nessun articolo trovato con codice: " + ogg.vsCodArt));
+					return null;
 				}
 				YDocumentoVenRigaPrm docVenRig = null;
 				if (keyDocVenRig != null) {
@@ -221,7 +222,7 @@ public class RicezioneBolleService {
 		docVen.setIdModPagamento("100");
 		docVen.setAbilitaCopiaCommenti(false);
 		docVen.setDataBolla(dataBLL);
-		docVen.setNumeroBolla(ogg.getNumeroBolla().trim());
+		docVen.setNumeroBolla(ogg.getNumeroBolla() != null ? ogg.getNumeroBolla().trim() : null);
 		docVen.setNumeroRifIntestatario(ogg.getNumeroFattura() != null ? ogg.getNumeroFattura().trim() : "");
 		docVen.setDataRifIntestatario(ogg.dataFattura != null ? getDataFMT(ogg.dataFattura) : null);
 		int numColliTot = 0;
@@ -231,6 +232,8 @@ public class RicezioneBolleService {
 		docVen.setPesoLordo(pesoLordoTot);
 		docVen.setPesoNetto(pesoNettoTot);
 		docVen.setRicalcolaPesiEVolume(false);
+		docVen.setImportoPagVett(ogg.importoPagatoVettore);
+		docVen.setDistanzaInKM(ogg.distKM != null ? Integer.valueOf(ogg.distKM) : 0);
 		return docVen;
 	}
 
@@ -366,5 +369,4 @@ public class RicezioneBolleService {
 		}
 		return err;
 	}
-
 }

@@ -30,10 +30,5 @@
 			<type>2</type>
 			<location>K:/ThipRil/FIXWEB/FornaceCalandra/rpt</location>
 		</link>
-		<link>
-			<name>RptThipPers</name>
-			<type>2</type>
-			<location>T:/ThipPers/FornaceCalandra/4.7/rpt</location>
-		</link>
 	</linkedResources>
 </projectDescription>
