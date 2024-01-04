@@ -1,0 +1,37 @@
+<tfml>
+  <generator type="form"/>
+  <form classHdr="YLstTesTras"
+    name="YLstTesTrasForm"
+    locktype="nolock"
+    errorList="yes" menubar="yes" toolbar="yes" submitReset="none"
+    jsLibraryName="it/fornacecalandra/thip/base/listini/YLstTesTras.js"
+    onLoadPresent="yes"
+    header="com.thera.thermfw.common.Header.jsp"
+    footer="com.thera.thermfw.common.Footer.jsp">
+    <menubar  name="myMenuBar">
+      <import file="it/thera/thip/cs/defObjMenu.tfml"/>
+    </menubar>
+    <toolbar name="myToolBar" imgwidth="16" imgheight="16">
+      <import file="it/thera/thip/cs/defObjMenu.tfml"/>
+    </toolbar>
+    <tabbed name="mytabbed" height="100%" width="100%">
+      <tab name="tab1" resourceFile="it.fornacecalandra.thip.base.listini.resources.YLstTesTras" resourceID="tab1">
+        <textinput name="IdListino" classAD="IdListino"/>
+        <multisearchform name="Vettore" classRD="Vettore"/>
+        <textinput name="DataFinValidita" classAD="DataFinValidita" showCalendarBtn="yes"/>
+        <textinput name="DataInzValidita" classAD="DataInzValidita" showCalendarBtn="yes"/>
+        <multisearchform name="TipoTrasporto" classRD="TipoTrasporto"/>
+        <editgrid name="YLstRigTras" classCD="YLstRigTras" menu="bottom" type="independent">
+          <column classAD="IdFascia"/>
+          <column classAD="IdListino" hidden="yes"/>
+          <column classAD="IdAzienda" hidden="yes"/>
+          <column classAD="KmDa"/>
+          <column classAD="KmA"/>
+          <column classAD="Prezzo"/>
+          <column classAD="Azienda.Descrizione" hideAsDefault="yes"/>
+        </editgrid>
+      </tab>
+    </tabbed>
+  </form>
+</tfml>
+

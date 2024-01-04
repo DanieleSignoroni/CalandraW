@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE TDDML SYSTEM "../../../TDDML.dtd">
+<TDDML>
+  <!-- YLST_TES_TRAS (YLST_TE) -->
+  <AlterTable schema="THIPPERS" name="YLST_TES_TRAS">
+    <AddConstraint>
+      <Constraint name="Azienda_324037796" refschema="THIP" reftable="AZIENDE_ESTESE" schema="THIPPERS" ondelete="Restrict">
+        <ColumnRef name="ID_AZIENDA"/>
+      </Constraint>
+      <Constraint name="Vettore_997369774" refschema="THIP" reftable="FORNITORI_ACQ" schema="THIPPERS" ondelete="Cascade">
+        <ColumnRef name="ID_AZIENDA"/>
+        <ColumnRef name="ID_VETTORE"/>
+      </Constraint>
+      <Constraint name="TipoTrasporto_6783" refschema="THIP" reftable="GIRI_CONSEGNE" schema="THIPPERS" ondelete="Cascade">
+        <ColumnRef name="ID_AZIENDA"/>
+        <ColumnRef name="ID_TIPO_TRASPORTO"/>
+      </Constraint>
+    </AddConstraint>
+  </AlterTable>
+  <!-- YLST_RIG_TRAS (YLST_RI) -->
+  <AlterTable schema="THIPPERS" name="YLST_RIG_TRAS">
+    <AddConstraint>
+      <Constraint name="Azienda_483591345" refschema="THIP" reftable="AZIENDE_ESTESE" schema="THIPPERS" ondelete="Restrict">
+        <ColumnRef name="ID_AZIENDA"/>
+      </Constraint>
+      <Constraint name="YLstRigTras_181794" refschema="THIPPERS" reftable="YLST_TES_TRAS" schema="THIPPERS" ondelete="Cascade">
+        <ColumnRef name="ID_AZIENDA"/>
+        <ColumnRef name="ID_LISTINO"/>
+      </Constraint>
+    </AddConstraint>
+  </AlterTable>
+</TDDML>

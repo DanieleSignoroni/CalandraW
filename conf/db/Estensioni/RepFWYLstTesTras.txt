@@ -1,0 +1,5 @@
+<B>2024-01-04 09:31:37</B>
+<B>2024-01-04 09:31:37</B>
+<BR>Il descrittore di classe <B>YLstRigTras</B> è stato generato correttamente
+<BR>Il descrittore di classe <B>YLstTesTras</B> è stato generato correttamente
+<BR><B>La generazione descrittori di classe è completata con successo</B><BR>

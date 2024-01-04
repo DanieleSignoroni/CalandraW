@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE TDDML SYSTEM "../../../TDDML.dtd">
+<TDDML>
+  <!-- YLST_TES_TRAS (YLST_TE): Listino trasporto; -->
+  <CreateTable schema="THIPPERS" name="YLST_TES_TRAS" shortname="YLST_TE">
+    <Column name="ID_AZIENDA" shortname="ID_AZIENDA" type="char" length="3" nullable="no"/>
+    <Column name="STATO" shortname="STATO" type="char" length="1" nullable="no"/>
+    <Column name="R_UTENTE_CRZ" shortname="R_UTENTE_C" type="char" length="20" nullable="yes"/>
+    <Column name="TIMESTAMP_CRZ" shortname="TIMESTAMP_" type="timestamp" nullable="no" default="CURRENT TIMESTAMP"/>
+    <Column name="R_UTENTE_AGG" shortname="R_UTENTE_A" type="char" length="20" nullable="yes"/>
+    <Column name="TIMESTAMP_AGG" shortname="TIMESTAMP0" type="timestamp" nullable="no" default="CURRENT TIMESTAMP"/>
+    <Column name="ID_LISTINO" shortname="ID_LISTINO" type="integer" nullable="no"/>
+    <Column name="ID_VETTORE" shortname="ID_VETTORE" type="char" length="8" nullable="yes"/>
+    <Column name="DATA_INZ_VALIDITA" shortname="DATA_INZ_V" type="date" nullable="yes"/>
+    <Column name="DATA_FIN_VALIDITA" shortname="DATA_FIN_V" type="date" nullable="yes"/>
+    <Column name="ID_TIPO_TRASPORTO" shortname="ID_TIPO_TR" type="char" length="5" nullable="yes"/>
+  </CreateTable>
+  <CreateIndex schema="THIPPERS" name="YLST_TES_TRAS_I01" tabschema="THIPPERS" tabname="YLST_TES_TRAS" shortname="YLST_T_I01" unique="yes">
+    <IndexCol name="ID_AZIENDA" order="Asc"/>
+    <IndexCol name="ID_LISTINO" order="Asc"/>
+  </CreateIndex>
+  <AlterTable schema="THIPPERS" name="YLST_TES_TRAS">
+    <AddPrimaryKey>
+      <PrimaryKey>
+        <ColumnRef name="ID_AZIENDA"/>
+        <ColumnRef name="ID_LISTINO"/>
+      </PrimaryKey>
+    </AddPrimaryKey>
+  </AlterTable>
+  <Comment>
+    <CommentTable schema="THIPPERS" name="YLST_TES_TRAS" text="Listino trasporto">
+      <CommentColumn name="ID_AZIENDA" text="Azienda"/>
+      <CommentColumn name="STATO" text="Stato"/>
+      <CommentColumn name="R_UTENTE_CRZ" text="Utente creazione"/>
+      <CommentColumn name="TIMESTAMP_CRZ" text="Timestamp creazione"/>
+      <CommentColumn name="R_UTENTE_AGG" text="Utente ultima modifica"/>
+      <CommentColumn name="TIMESTAMP_AGG" text="Timestamp ultima modifica"/>
+      <CommentColumn name="ID_LISTINO" text="Id listino"/>
+      <CommentColumn name="ID_VETTORE" text="Id vettore"/>
+      <CommentColumn name="DATA_INZ_VALIDITA" text="Data inizio validita"/>
+      <CommentColumn name="DATA_FIN_VALIDITA" text="Date fine validita"/>
+      <CommentColumn name="ID_TIPO_TRASPORTO" text="Tipo trasporto"/>
+    </CommentTable>
+    <CommentIndex schema="THIPPERS" name="YLST_TES_TRAS_I01" text="Primary Key"/>
+  </Comment>
+  <Grant schema="THIPPERS" name="YLST_TES_TRAS"/>
+</TDDML>

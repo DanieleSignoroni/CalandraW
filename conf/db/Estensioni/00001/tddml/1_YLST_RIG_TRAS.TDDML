@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE TDDML SYSTEM "../../../TDDML.dtd">
+<TDDML>
+  <!-- YLST_RIG_TRAS (YLST_RI): Listino riga trasporto; -->
+  <CreateTable schema="THIPPERS" name="YLST_RIG_TRAS" shortname="YLST_RI">
+    <Column name="ID_AZIENDA" shortname="ID_AZIEND0" type="char" length="3" nullable="no"/>
+    <Column name="ID_LISTINO" shortname="ID_LISTIN0" type="integer" nullable="no"/>
+    <Column name="STATO" shortname="STAT0" type="char" length="1" nullable="no"/>
+    <Column name="R_UTENTE_CRZ" shortname="R_UTENTE_0" type="char" length="20" nullable="yes"/>
+    <Column name="TIMESTAMP_CRZ" shortname="TIMESTAMP0" type="timestamp" nullable="no" default="CURRENT TIMESTAMP"/>
+    <Column name="R_UTENTE_AGG" shortname="R_UTENTE_1" type="char" length="20" nullable="yes"/>
+    <Column name="TIMESTAMP_AGG" shortname="TIMESTAMP1" type="timestamp" nullable="no" default="CURRENT TIMESTAMP"/>
+    <Column name="ID_FASCIA" shortname="ID_FASCIA" type="integer" nullable="no"/>
+    <Column name="KM_DA" shortname="KM_DA" type="smallint" nullable="yes"/>
+    <Column name="KM_A" shortname="KM_A" type="smallint" nullable="yes"/>
+    <Column name="PREZZO" shortname="PREZZO" type="decimal" length="19" scale="6" nullable="yes"/>
+  </CreateTable>
+  <CreateIndex schema="THIPPERS" name="YLST_RIG_TRAS_I01" tabschema="THIPPERS" tabname="YLST_RIG_TRAS" shortname="YLST_R_I01" unique="yes">
+    <IndexCol name="ID_AZIENDA" order="Asc"/>
+    <IndexCol name="ID_LISTINO" order="Asc"/>
+    <IndexCol name="ID_FASCIA" order="Asc"/>
+  </CreateIndex>
+  <AlterTable schema="THIPPERS" name="YLST_RIG_TRAS">
+    <AddPrimaryKey>
+      <PrimaryKey>
+        <ColumnRef name="ID_AZIENDA"/>
+        <ColumnRef name="ID_LISTINO"/>
+        <ColumnRef name="ID_FASCIA"/>
+      </PrimaryKey>
+    </AddPrimaryKey>
+  </AlterTable>
+  <Comment>
+    <CommentTable schema="THIPPERS" name="YLST_RIG_TRAS" text="Listino riga trasporto">
+      <CommentColumn name="ID_AZIENDA" text="Azienda"/>
+      <CommentColumn name="ID_LISTINO" text="Id listino"/>
+      <CommentColumn name="STATO" text="Stato"/>
+      <CommentColumn name="R_UTENTE_CRZ" text="Utente creazione"/>
+      <CommentColumn name="TIMESTAMP_CRZ" text="Timestamp creazione"/>
+      <CommentColumn name="R_UTENTE_AGG" text="Utente ultima modifica"/>
+      <CommentColumn name="TIMESTAMP_AGG" text="Timestamp ultima modifica"/>
+      <CommentColumn name="ID_FASCIA" text="Id fascia"/>
+      <CommentColumn name="KM_DA" text="Km da"/>
+      <CommentColumn name="KM_A" text="Km a"/>
+      <CommentColumn name="PREZZO" text="Prezzo"/>
+    </CommentTable>
+    <CommentIndex schema="THIPPERS" name="YLST_RIG_TRAS_I01" text="Primary Key"/>
+  </Comment>
+  <Grant schema="THIPPERS" name="YLST_RIG_TRAS"/>
+</TDDML>

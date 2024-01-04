@@ -1,0 +1,4 @@
+<B>2024-01-04 09:31:42</B>
+<BR>Il file <B>YLstRigTras.jsp</B> è stato generato correttamente nel cartela <B>W:\PthDev\Projects\Panthera\FornaceCalandra\conf\db\Estensioni\00001\websrc\it\fornacecalandra\thip\base\listini</B><BR>Il file <B>YLstRigTras.jsp</B> è stato copiato nel classpath
+<BR>Il file <B>YLstTesTras.jsp</B> è stato generato correttamente nel cartela <B>W:\PthDev\Projects\Panthera\FornaceCalandra\conf\db\Estensioni\00001\websrc\it\fornacecalandra\thip\base\listini</B><BR>Il file <B>YLstTesTras.jsp</B> è stato copiato nel classpath
+<BR><B>Generazione JSP è completata con successo</B><BR>
